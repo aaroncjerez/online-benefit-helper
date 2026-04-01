@@ -1,65 +1,182 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const services = [
+  {
+    icon: "🛡️",
+    title: "Disability Benefits",
+    description:
+      "Find out if you qualify for monthly disability benefit programs. Free eligibility checks available.",
+  },
+  {
+    icon: "⚖️",
+    title: "Legal Assistance",
+    description:
+      "Connect with legal professionals who specialize in benefits claims, injury cases, and consumer rights.",
+  },
+  {
+    icon: "🏥",
+    title: "Senior Programs",
+    description:
+      "Explore programs designed to help seniors with healthcare, prescription costs, and daily living support.",
+  },
+  {
+    icon: "📋",
+    title: "Insurance Options",
+    description:
+      "Compare insurance plans and find coverage that fits your needs and budget.",
+  },
+];
+
+const steps = [
+  {
+    number: "1",
+    title: "Answer a Few Questions",
+    description:
+      "Tell us about your situation so we can match you with the right programs.",
+  },
+  {
+    number: "2",
+    title: "Review Your Options",
+    description:
+      "We'll show you benefit programs you may be eligible for based on your answers.",
+  },
+  {
+    number: "3",
+    title: "Get Connected",
+    description:
+      "Speak with a qualified specialist who can help you through the process.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Nav */}
+      <header className="border-b border-gray-200 bg-white">
+        <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
+          <span className="text-lg font-semibold tracking-tight text-gray-900">
+            Online Benefit Helper
+          </span>
+          <nav className="hidden sm:flex gap-6 text-sm text-gray-600">
+            <a href="#services" className="hover:text-gray-900">
+              Services
+            </a>
+            <a href="#how-it-works" className="hover:text-gray-900">
+              How It Works
+            </a>
+            <a href="#about" className="hover:text-gray-900">
+              About
+            </a>
+          </nav>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero */}
+        <section className="bg-gradient-to-b from-blue-50 to-white py-20 px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-tight">
+              Helping Americans Find the Benefits They Deserve
+            </h1>
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+              We connect people with benefit programs, legal resources, and
+              support services — all at no cost to you. Answer a few simple
+              questions to see what you may qualify for.
+            </p>
+            <a
+              href="#services"
+              className="mt-8 inline-block rounded-lg bg-blue-600 px-8 py-3 text-sm font-semibold text-white shadow hover:bg-blue-700 transition-colors"
+            >
+              Explore Programs
+            </a>
+          </div>
+        </section>
+
+        {/* Services */}
+        <section id="services" className="py-20 px-6">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-2xl font-bold text-center text-gray-900">
+              What We Help With
+            </h2>
+            <p className="mt-3 text-center text-gray-500 max-w-xl mx-auto">
+              We partner with trusted providers across multiple benefit
+              categories.
+            </p>
+            <div className="mt-12 grid gap-8 sm:grid-cols-2">
+              {services.map((s) => (
+                <div
+                  key={s.title}
+                  className="rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow"
+                >
+                  <span className="text-3xl">{s.icon}</span>
+                  <h3 className="mt-4 text-lg font-semibold text-gray-900">
+                    {s.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                    {s.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section id="how-it-works" className="bg-gray-50 py-20 px-6">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-2xl font-bold text-center text-gray-900">
+              How It Works
+            </h2>
+            <div className="mt-12 grid gap-10 sm:grid-cols-3">
+              {steps.map((s) => (
+                <div key={s.number} className="text-center">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white text-lg font-bold">
+                    {s.number}
+                  </div>
+                  <h3 className="mt-4 font-semibold text-gray-900">
+                    {s.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-600">
+                    {s.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* About */}
+        <section id="about" className="py-20 px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-bold text-gray-900">About Us</h2>
+            <p className="mt-4 text-gray-600 leading-relaxed">
+              Online Benefit Helper is a resource platform that connects
+              individuals with benefit programs and professional services. We do
+              not provide legal, financial, or medical advice. Our goal is to
+              simplify the process of finding programs you may be eligible for
+              and connecting you with qualified professionals.
+            </p>
+          </div>
+        </section>
       </main>
-    </div>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-200 bg-white py-8 px-6">
+        <div className="mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+          <span>
+            &copy; {new Date().getFullYear()} Online Benefit Helper. All rights
+            reserved.
+          </span>
+          <div className="flex gap-6">
+            <Link href="/privacy-policy" className="hover:text-gray-900">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-gray-900">
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }
